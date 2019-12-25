@@ -1,0 +1,12 @@
+# Only allow shops to be created in claims that player is owner of.
+# --> If false anyone can create a shop in the any claim.
+only-claim-owner-can-create-shops: true
+
+# Ignore claim checks if player is op, allows op to create shop anywhere.
+op-bypass-claim-checks: true
+
+# Delete shops inside a claim if that claim is deleted/removed
+delete-shops-when-claims-deleted: true
+
+# Delete shops inside a claim if that claim expires
+delete-shops-when-claims-expires: true

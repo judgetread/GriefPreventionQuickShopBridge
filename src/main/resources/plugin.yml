@@ -1,0 +1,9 @@
+name: ${name}
+main: ${package}.${name}
+version: ${project.version}
+authors: [Judgetread]
+
+description: QuickShop Reremake GriefPrevtion Bridge
+softdepend: [GriefPrevention, QuickShop]
+
+api-version: 1.13
