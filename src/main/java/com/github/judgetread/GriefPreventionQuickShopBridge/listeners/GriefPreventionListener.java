@@ -56,6 +56,10 @@ public class GriefPreventionListener implements Listener {
      * @param claim A GriefPrevention claim
      */
     private void deleteAllShopsInClaim(final Claim claim) {
+        if(claim == null){
+            return;
+        }
+
         Iterator<Shop> bIt = ((QuickShop) plugin.getQuickShop()).getShopManager().getShopIterator();
 
         if (bIt == null) {
