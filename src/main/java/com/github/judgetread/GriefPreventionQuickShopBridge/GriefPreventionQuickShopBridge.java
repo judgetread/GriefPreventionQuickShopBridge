@@ -1,13 +1,15 @@
 package com.github.judgetread.GriefPreventionQuickShopBridge;
 
+import com.github.judgetread.GriefPreventionQuickShopBridge.listeners.MainCommandExecutor;
 import com.github.judgetread.GriefPreventionQuickShopBridge.listeners.GriefPreventionListener;
 import com.github.judgetread.GriefPreventionQuickShopBridge.listeners.QuickShopListener;
 import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -66,7 +68,7 @@ public class GriefPreventionQuickShopBridge extends JavaPlugin {
     /**
      * Reload this plugin.
      */
-    private void reload() {
+    public void reload() {
         Bukkit.getConsoleSender().sendMessage(" Reloading " + getName());
         unregisterListeners();
         unloadHooks();
@@ -85,6 +87,7 @@ public class GriefPreventionQuickShopBridge extends JavaPlugin {
             this.getPluginLoader().disablePlugin(this);
         }
         registerListeners();
+        registerCommands();
     }
 
     /**
@@ -102,6 +105,16 @@ public class GriefPreventionQuickShopBridge extends JavaPlugin {
     private void unregisterListeners() {
         Bukkit.getConsoleSender().sendMessage(" Unregistering Listeners...");
         HandlerList.unregisterAll(this);
+    }
+
+    /**
+     * Register Commands
+     */
+    private void registerCommands(){
+        Bukkit.getConsoleSender().sendMessage(" Registering Commands...");
+        PluginCommand gpqsbCommand = getCommand("GriefPreventionQuickShopBridge");
+        gpqsbCommand.setExecutor(new MainCommandExecutor(this));
+        gpqsbCommand.setUsage(ChatColor.translateAlternateColorCodes('&', gpqsbCommand.getUsage()));
     }
 
     /**

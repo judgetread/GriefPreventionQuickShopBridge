@@ -1,9 +1,24 @@
 name: ${name}
 main: ${package}.${name}
 version: ${project.version}
-authors: [Judgetread]
+authors: [Judgetread, Ajoobe]
 
 description: QuickShop Reremake GriefPrevtion Bridge
 softdepend: [GriefPrevention, QuickShop]
 
 api-version: 1.13
+
+commands:
+  GriefPreventionQuickShopBridge:
+    description: GriefPreventionQuickShopBridge command
+    usage: '&6/GriefPreventionQuickShopBridge <sub-command>'
+    aliases: [gpqsb, gpb, qsb]
+    permission-message: '&4You not have have permission to use this command.'
+    default: op
+permissions:
+  GriefPreventionQuickShopBridge.help:
+    description: GriefPreventionQuickShopBridge Help
+    default: op
+  GriefPreventionQuickShopBridge.reload:
+    description: GriefPreventionQuickShopBridge Reload
+    default: op
