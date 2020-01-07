@@ -28,7 +28,7 @@ public class GriefPreventionListener implements Listener {
     /**
      * GriefPrevention Claim Delete Event
      *
-     * @param event
+     * @param event ClaimDeletedEvent
      */
     @EventHandler
     public void onClaimDeleteEvent(ClaimDeletedEvent event) {
@@ -40,7 +40,7 @@ public class GriefPreventionListener implements Listener {
     /**
      * GriefPrevention Claim Expire Event
      *
-     * @param event
+     * @param event ClaimExpirationEvent
      */
     @EventHandler
     public void onClaimExpireEvent(ClaimExpirationEvent event) {
@@ -55,8 +55,8 @@ public class GriefPreventionListener implements Listener {
      *
      * @param claim A GriefPrevention claim
      */
-    private void deleteAllShopsInClaim(final Claim claim) {
-        if(claim == null){
+    private void deleteAllShopsInClaim(Claim claim) {
+        if(claim == null || claim.equals(null)){
             return;
         }
 
@@ -81,9 +81,9 @@ public class GriefPreventionListener implements Listener {
                 }
 
                 // Try force saving of chunk ???
-                loc.getChunk().addPluginChunkTicket(plugin);
+                //loc.getChunk().addPluginChunkTicket(plugin);
                 shop.delete(false);
-                loc.getChunk().removePluginChunkTicket(plugin);
+                //loc.getChunk().removePluginChunkTicket(plugin);
             }
 
         }

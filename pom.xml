@@ -6,7 +6,7 @@
 
     <groupId>com.github.judgetread</groupId>
     <artifactId>GriefPreventionQuickShopBridge</artifactId>
-    <version>1.0.1</version>
+    <version>1.1.0</version>
 
     <licenses>
         <license>
@@ -32,6 +32,7 @@
     </scm>
 
     <build>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -41,6 +42,7 @@
                     <source>1.8</source>
                     <target>1.8</target>
                     <encoding>UTF-8</encoding>
+                    <outputFileName>${project.artifactId}</outputFileName>
                     <!--Use this comments args when compiler is NullPointerException-->
                     <!--<forceJavacCompilerUse>true</forceJavacCompilerUse>-->
                 </configuration>
@@ -143,7 +145,7 @@
         <dependency>
             <groupId>org.maxgamer</groupId>
             <artifactId>QuickShop</artifactId>
-            <version>Reremake 2.4.9.1</version>
+            <version>Reremake 3.0.2</version>
             <scope>system</scope>
             <systemPath>${basedir}/lib/QuickShop-Reremake.2.4.9.jar</systemPath>
         </dependency>

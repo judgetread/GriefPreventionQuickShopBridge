@@ -79,6 +79,11 @@ public class GriefPreventionQuickShopBridge extends JavaPlugin {
      */
     private void startup() {
         loadHooks();
+        if(griefPrevention == null || quickShop == null){
+            Bukkit.getConsoleSender().sendMessage(" Missing dependency of either GriefPrevention or QuickShop");
+            Bukkit.getConsoleSender().sendMessage(" Unable to ");
+            this.getPluginLoader().disablePlugin(this);
+        }
         registerListeners();
     }
 
@@ -113,8 +118,8 @@ public class GriefPreventionQuickShopBridge extends JavaPlugin {
      */
     private void loadHooks() {
         Bukkit.getConsoleSender().sendMessage(" Loading Hooks...");
-        griefPrevention = hookPlugin(this.getName() + " GriefPrevention");
-        quickShop = hookPlugin(this.getName() + " QuickShop");
+        griefPrevention = hookPlugin("GriefPrevention");
+        quickShop = hookPlugin("QuickShop");
     }
 
     /**
@@ -135,7 +140,7 @@ public class GriefPreventionQuickShopBridge extends JavaPlugin {
      * @param pluginName String name of the plugin.
      * @return Plugin
      */
-    private @Nullable Plugin hookPlugin(@NotNull @NonNull String pluginName) {
+    private @Nullable Plugin hookPlugin(@NotNull String pluginName) {
         @Nullable Plugin thirdPlugin = Bukkit.getPluginManager().getPlugin(pluginName);
         if (thirdPlugin != null) {
             Bukkit.getConsoleSender().sendMessage(" Hooked: " + pluginName);
